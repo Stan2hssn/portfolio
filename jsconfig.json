@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@logo/*": ["public/images/logo/*"],
+      "@projects/*": ["public/images/projects/*"],
+      "@textures/*": ["public/images/textures/*"],
+      "@icons/*": ["public/images/icons/*"],
+      "@templates/*": ["components/templates/*"],
+      "@molecules/*": ["components/molecules/*"],
+      "@organismes/*": ["components/organismes/*"],
+      "@atoms/*": ["components/atoms/*"],
+      "@utils/*": ["utils/*"]
+    }
+  }
+}
