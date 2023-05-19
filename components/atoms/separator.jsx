@@ -1,7 +1,12 @@
 import React from "react";
+import Heading from "./heading";
 
 const Separator = () => {
-  return <span className="flex text-separator px-2">||</span>;
+  return (
+    <Heading as="span" size="separator" color="dark" className="flex px-2">
+      ||
+    </Heading>
+  );
 };
 
 export default Separator;

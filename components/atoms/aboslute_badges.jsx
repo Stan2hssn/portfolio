@@ -1,5 +1,5 @@
 "use client";
-import Container from "@templates/Container";
+import Container from "@templates/container";
 import gsap from "gsap";
 import React from "react";
 import { classNames } from "@utils/class_names";
@@ -16,7 +16,7 @@ export default function AbsoluteBadges() {
   const tl2 = gsap.timeline({ paused: true });
   const tl3 = gsap.timeline({ paused: true });
 
-  function animation() {
+  async function animation() {
     tl2
       .to(".animationRound", {
         scale: 1.8,
@@ -53,6 +53,9 @@ export default function AbsoluteBadges() {
   }
 
   function GsapIn() {
+    tl.clear();
+    tl2.clear();
+    tl3.clear();
     tl.play();
     tl2.play();
     console.log("enter");
@@ -65,6 +68,12 @@ export default function AbsoluteBadges() {
     tl3.reverse();
     console.log("out");
   }
+
+  function gsapClicked() {
+    tl3.play();
+    Clicked();
+  }
+
   async function Clicked() {
     await navigator.clipboard.writeText("stan.husson@edu.gobelins.fr");
 
@@ -89,7 +98,6 @@ export default function AbsoluteBadges() {
         duration: 0.3,
         ease: "power2.inOut",
       });
-    tl3.play();
   }
 
   return (
@@ -102,7 +110,7 @@ export default function AbsoluteBadges() {
         className="relative flex flex-col w-40 h-40 rounded-full items-center justify-center z-[100] cursor-pointer"
         onMouseEnter={GsapIn}
         onMouseLeave={GsapOut}
-        onClick={Clicked}
+        onClick={gsapClicked}
       >
         <div className="flex flex-col z-[100]">
           <div
