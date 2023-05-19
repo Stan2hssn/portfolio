@@ -3,6 +3,5 @@
 @tailwind utilities;
 
 :root {
-    --translate-x :-50%;
     --mouse-x :0deg;
 }

@@ -1,7 +1,6 @@
-import React, { forwardRef } from "react";
-import { classNames } from "@utils/class_names";
+import React from "react";
 import Logo from "@atoms/Logo";
-import Container from "@templates/Container";
+import Container from "@templates/container";
 import Nav_items from "@atoms/Nav_item";
 import Link from "next/link";
 

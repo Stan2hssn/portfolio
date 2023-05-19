@@ -1,7 +1,7 @@
 import React from "react";
 import { lenis } from "@utils/lenis";
-import Header from "@organismes/Header";
-import Hero from "@organismes/Hero";
+import Header from "@organismes/header";
+import Hero from "@organismes/hero";
 import AbsoluteBadges from "@atoms/Aboslute_badges";
 import Noise from "@atoms/Noise";
 import ProjectSection from "@organismes/project_section";

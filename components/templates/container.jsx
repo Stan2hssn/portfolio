@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import { classNames } from "@utils/class_names";
 
 export default function Container(props) {

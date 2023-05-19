@@ -1,5 +1,5 @@
 import Heading from "@atoms/heading";
-import Container from "@templates/Container";
+import Container from "@templates/container";
 import Blob from "@molecules/blob/Index";
 import React from "react";
 
