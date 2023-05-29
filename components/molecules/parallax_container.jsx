@@ -2,14 +2,15 @@
 import React, { useEffect, useRef, createRef } from "react";
 import ParallaxImages from "@atoms/parallax_images";
 import { classNames } from "@utils/class_names";
+import gsap from "gsap";
 
 const ParallaxContainer = React.forwardRef((props, ref) => {
   const containerRef = useRef(null);
   const coverCase = [
-    "relative w-2/3 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0",
-    "absolute w-1/3 top-2/3 right-0 transform z-20",
-    "absolute w-1/4 top-1/3 left-0 transform  z-10",
-    "absolute W-1/4 top-2/2 left-2/3 transform -translate-y-1/2 -z-10",
+    "relative !aspect-[16/8] w-3/4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[1]",
+    "absolute w-1/3 top-3/4 right-0 transform z-20",
+    "absolute w-1/3 top-1/2  -translate-x-1/4 -translate-y-1/2 left-0 transform  z-10",
+    "absolute W-1/4 top-2/2 left-2/3 transform translate-x-1/4 -translate-y-1/2 translate-z-1/2 z-0",
   ];
 
   const childContainers = coverCase.map(() => ({ contentRef: useRef() }));
@@ -22,23 +23,24 @@ const ParallaxContainer = React.forwardRef((props, ref) => {
       return;
     }
 
-    const influence = 16;
+    const influence = 10;
 
     const elementHeight = parallaxContentElement.offsetHeight;
+    const elementWidth = parallaxContentElement.offsetWidth;
     const offset =
       (parallaxContainerElement.getBoundingClientRect().top - elementHeight) /
-        120 -
+        60 -
       1;
     const mouse = e.clientX / window.innerWidth - 0.5;
 
     const mouseX = mouse * influence;
-    const translateX = mouseX * 4;
+    const translateX = -mouseX * influence;
 
     handleParallax(
       offset,
       mouseX,
       translateX,
-      elementHeight,
+      elementWidth,
       containerRef,
       contentRef
     );
@@ -48,7 +50,7 @@ const ParallaxContainer = React.forwardRef((props, ref) => {
     offset,
     mouseX,
     translateX,
-    elementHeight,
+    elementWidth,
     containerRef,
     contentRef
   ) {
@@ -56,19 +58,24 @@ const ParallaxContainer = React.forwardRef((props, ref) => {
     const parallaxContentElement = contentRef.current;
 
     if (translateX) {
-      parallaxContentElement.style.setProperty(
-        "--translate-x",
-        translateX + "px"
-      );
+      gsap.to(parallaxContentElement, {
+        "--translate-x": translateX + "px",
+        duration: 0.5,
+        ease: "slow",
+      });
     }
 
     parallaxContainerElement.style.setProperty(
-      "--height-y",
-      elementHeight + "px"
+      "--width-y",
+      elementWidth * 3 + "px"
     );
 
     if (mouseX) {
-      parallaxContainerElement.style.setProperty("--mouse-x", mouseX + "deg");
+      gsap.to(parallaxContainerElement, {
+        "--mouse-x": mouseX + "deg",
+        duration: 1,
+        ease: "slow",
+      });
     }
 
     if (offset) {
@@ -102,22 +109,22 @@ const ParallaxContainer = React.forwardRef((props, ref) => {
 
   return (
     <section
-      className="relative flex w-3/4 h-auto"
+      className="relative flex w-4/5 h-auto preserve-3d backface-hidden will-change-transform "
       ref={containerRef}
       style={{
         transform:
-          "perspective(var(--height-y)) rotateY(var(--mouse-x)) rotateX(var(--rotate-x))",
+          "perspective(var(--width-y)) rotateY(var(--mouse-x)) rotateX(var(--rotate-x)) ",
       }}
     >
       {childContainers.map(({ contentRef }, index) => (
         <div
           key={index}
           className={classNames(
-            "flex justify-center items-center aspect-video transform-gpu overflow-hidden shadow-100 shadow-background-shadow_light",
+            "flex justify-center items-center aspect-[16/10] will-change-transform transform-gpu bg-transparent overflow-hidden backface-hidden shadow-100 shadow-background-shadow_dark ",
             coverCase[index]
           )}
         >
-          <ParallaxImages ref={contentRef} />
+          <ParallaxImages ref={contentRef} index={index} />
         </div>
       ))}
     </section>

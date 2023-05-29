@@ -1,17 +1,28 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    images: {
-      domains: ["images.unsplash.com"],
-    },
-    webpack: (config) => {
-      config.module.rules.push({
-        test: /\.glsl$/,
-        use: "raw-loader",
-      });
-  
-      return config;
-    },
-  };
+  reactStrictMode: true,
+  images: {
+    domains: ["images.unsplash.com"],
+  },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.mp4$/,
+      use: [
+        {
+          loader: "file-loader",
+        },
+      ],
+    });
 
-module.exports = nextConfig
+    config.module.rules.push({
+      test: /\.glsl$/,
+      use: {
+        loader: "raw-loader",
+      },
+    });
+
+    return config;
+  },
+};
+
+module.exports = nextConfig;

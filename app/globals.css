@@ -3,5 +3,8 @@
 @tailwind utilities;
 
 :root {
-    --mouse-x :0deg;
+    --translate-x :0px;
+    --mouse-x: 0deg;
+    --rotate-x: 0deg;
+    --width-y: 0px;
 }
