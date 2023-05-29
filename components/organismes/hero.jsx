@@ -1,6 +1,6 @@
 import Heading from "@atoms/heading";
 import Container from "@templates/container";
-import Blob from "@molecules/blob/Index";
+import Blob from "@molecules/blob/index";
 import React from "react";
 
 export default function Hero() {

@@ -2,8 +2,8 @@ import React from "react";
 import { lenis } from "@utils/lenis";
 import Header from "@organismes/header";
 import Hero from "@organismes/hero";
-import AbsoluteBadges from "@atoms/Aboslute_badges";
-import Noise from "@atoms/Noise";
+import AbsoluteBadges from "@atoms/Absolute_badges";
+import Noise from "@atoms/noise";
 import ProjectSection from "@organismes/project_section";
 
 export default function Home() {
