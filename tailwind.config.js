@@ -285,6 +285,14 @@ export const theme = {
           fontWeight: "300",
         },
       ],
+      button: [
+        "1.25rem",
+        {
+          lineHeight: "1.75rem",
+          letterSpacing: "0.03em",
+          fontWeight: "300",
+        },
+      ],
     },
     colors: {
       content: {
@@ -306,6 +314,7 @@ export const theme = {
       },
     },
     animation: {
+      cursor: "cursor 3.2s linear infinite",
       spinSlow1: "spin1 2s linear infinite",
       spinSlow2: "spin2 2s linear infinite",
       spinSlow3: "spin3 2s linear infinite",
@@ -375,6 +384,15 @@ export const theme = {
           "background-size": "cover",
           "background-image": "url('/images/textures/noise1.png')",
         },
+      },
+      cursor: {
+        "0%": { borderRadius: "63.37px 37px 54px 46px" },
+        "15%": { borderRadius: "40px 60px 54px 46px" },
+        "30%": { borderRadius: "54px 46px 38px 62px" },
+        "45%": { borderRadius: "61px 39px 55px 45px" },
+        "60%": { borderRadius: "50px 50px 34px 46px" },
+        "75%": { borderRadius: "46px 54px 50px 50px" },
+        "100%": { borderRadius: "63.37px 37px 54px 46px" },
       },
     },
   },

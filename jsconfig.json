@@ -10,7 +10,8 @@
       "@molecules/*": ["components/molecules/*"],
       "@organismes/*": ["components/organismes/*"],
       "@atoms/*": ["components/atoms/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@context/*": ["app/context/*"]
     }
   }
 }

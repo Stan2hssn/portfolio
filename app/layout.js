@@ -1,6 +1,7 @@
 import "./globals.css";
 import localFont from "next/font/local";
 import { classNames } from "@utils/class_names";
+import { CursorProvider } from "@context/cursor_provider";
 
 const manrope = localFont({
   src: "../public/fonts/Manrope.ttf",
@@ -30,9 +31,9 @@ export default function RootLayout({ children }) {
     >
       <body
         cz-shortcut-listen="true"
-        className="font-sans flex flex-col  text-content-grey_100 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+        className="font-sans flex flex-col  text-content-grey_100 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] cursor-none"
       >
-        {children}
+        <CursorProvider>{children}</CursorProvider>
       </body>
     </html>
   );

@@ -20,6 +20,7 @@ const SIZE_CLASSNAMES = {
   description_lg:
     "text-description_lgSM md:text-description_lgMD lg:text-description_lg font-sans",
   detail: "text-detailSM md:text-detailMD lg:text-detail font-sans",
+  button: "text-button font-sans uppercase",
 };
 
 export default function Heading({

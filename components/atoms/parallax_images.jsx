@@ -1,17 +1,18 @@
 import React, { forwardRef } from "react";
 import Image from "next/image";
+import data from "@utils/data.json";
 
-const cover = {
-  video: "/images/projects/Liquid/Cover.mp4",
-  image: "/images/projects/Liquid/Liquid_2.webp",
-};
+const ParallaxImages = forwardRef(({ index, ...props }, ref) => {
+  const item = data[0].collection[0];
+  if (!item || !item.thumbnails || item.thumbnails.length <= index) {
+    return null;
+  }
 
-const ParallaxImages = forwardRef((props, ref) => {
-  const isVideo = cover.video && cover.video.endsWith(".mp4");
-
+  const thumbnail = item.thumbnails[index];
+  const isVideo = thumbnail.endsWith(".mp4");
   return isVideo ? (
     <video
-      key={props.key}
+      key={index}
       ref={ref}
       width={500}
       height={500}
@@ -25,16 +26,16 @@ const ParallaxImages = forwardRef((props, ref) => {
       controls
       className="relative min-w-[150%] transform will-change-transform bg-contain"
     >
-      <source src={cover.video} type="video/mp4" />
+      <source src={thumbnail} type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   ) : (
     <Image
-      key={props.key}
+      key={index}
       ref={ref}
       className="relative min-w-[130%] overflow-hidden transform will-change-transform bg-contain"
-      src={cover.image}
-      alt="Picture of the project"
+      src={thumbnail}
+      alt={`Picture of the project ${item.title}`}
       width={500}
       height={500}
       priority="true"

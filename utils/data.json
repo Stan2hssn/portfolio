@@ -1,0 +1,89 @@
+[
+  {
+    "collection": [
+      {
+        "title": "Wally",
+        "tags": [
+          "UI/ux design",
+          "3d modelisation",
+          "brand design",
+          "motion animation"
+        ],
+        "thumbnails": [
+          "/images/projects/Liquid/Cover.mp4",
+          "/images/projects/Liquid/Liquid_2.webp",
+          "/images/projects/Liquid/Liquid_2.webp",
+          "/images/projects/Liquid/Liquid_2.webp"
+        ]
+      },
+      {
+        "title": "Colord",
+        "tags": [
+          "UI/ux design",
+          "3d modélisation",
+          "animation",
+          "brand design",
+          "motion animation",
+          "sound design"
+        ],
+        "thumbnails": [
+          "/images/projects/Liquid/Cover.mp4",
+          "/images/projects/Liquid/Liquid_2.webp",
+          "/images/projects/Liquid/Liquid_2.webp",
+          "/images/projects/Liquid/Liquid_2.webp"
+        ]
+      },
+      {
+        "title": "Luomu",
+        "tags": [
+          "UI/ux design",
+          "3d modélisation",
+          "animation",
+          "brand design",
+          "motion animation",
+          "sound design"
+        ],
+        "thumbnails": [
+          "/images/projects/Liquid/Cover.mp4",
+          "/images/projects/Liquid/Liquid_2.webp",
+          "/images/projects/Liquid/Liquid_2.webp",
+          "/images/projects/Liquid/Liquid_2.webp"
+        ]
+      },
+      {
+        "title": "Personal",
+        "tags": [
+          "UI/ux design",
+          "3d modélisation",
+          "animation",
+          "brand design",
+          "motion animation",
+          "sound design"
+        ],
+        "thumbnails": [
+          "/images/projects/Liquid/Cover.mp4",
+          "/images/projects/Liquid/Liquid_2.webp",
+          "/images/projects/Liquid/Liquid_2.webp",
+          "/images/projects/Liquid/Liquid_2.webp"
+        ]
+      },
+      {
+        "title": "Liquid",
+        "tags": [
+          "UI/ux design",
+          "3d modélisation",
+          "animation",
+          "brand design",
+          "motion animation",
+          "sound design"
+        ],
+        "thumbnails": [
+          "/images/projects/Liquid/Cover.mp4",
+          "/images/projects/Liquid/Liquid_2.webp",
+          "/images/projects/Liquid/Liquid_2.webp",
+          "/images/projects/Liquid/Liquid_2.webp"
+        ]
+      }
+    ]
+  }
+]

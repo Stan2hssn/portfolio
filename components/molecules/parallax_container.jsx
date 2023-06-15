@@ -1,11 +1,14 @@
 "use client";
-import React, { useEffect, useRef, createRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ParallaxImages from "@atoms/parallax_images";
 import { classNames } from "@utils/class_names";
 import gsap from "gsap";
+import { useCursor } from "@context/cursor_provider";
 
 const ParallaxContainer = React.forwardRef((props, ref) => {
   const containerRef = useRef(null);
+  const [elementWidth, setElementWidth] = useState(0);
+  const { cursorPos, setIsOn } = useCursor();
   const coverCase = [
     "relative !aspect-[16/8] w-3/4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[1]",
     "absolute w-1/3 top-3/4 right-0 transform z-20",
@@ -26,36 +29,16 @@ const ParallaxContainer = React.forwardRef((props, ref) => {
     const influence = 10;
 
     const elementHeight = parallaxContentElement.offsetHeight;
-    const elementWidth = parallaxContentElement.offsetWidth;
+    const newElementWidth = parallaxContentElement.offsetWidth;
+    setElementWidth(newElementWidth);
     const offset =
       (parallaxContainerElement.getBoundingClientRect().top - elementHeight) /
         60 -
       1;
-    const mouse = e.clientX / window.innerWidth - 0.5;
+    const mouse = cursorPos.x / innerWidth - 0.5;
 
     const mouseX = mouse * influence;
     const translateX = -mouseX * influence;
-
-    handleParallax(
-      offset,
-      mouseX,
-      translateX,
-      elementWidth,
-      containerRef,
-      contentRef
-    );
-  }
-
-  function handleParallax(
-    offset,
-    mouseX,
-    translateX,
-    elementWidth,
-    containerRef,
-    contentRef
-  ) {
-    const parallaxContainerElement = containerRef.current;
-    const parallaxContentElement = contentRef.current;
 
     if (translateX) {
       gsap.to(parallaxContentElement, {
@@ -64,11 +47,6 @@ const ParallaxContainer = React.forwardRef((props, ref) => {
         ease: "slow",
       });
     }
-
-    parallaxContainerElement.style.setProperty(
-      "--width-y",
-      elementWidth * 3 + "px"
-    );
 
     if (mouseX) {
       gsap.to(parallaxContainerElement, {
@@ -82,7 +60,6 @@ const ParallaxContainer = React.forwardRef((props, ref) => {
       parallaxContainerElement.style.setProperty("--rotate-x", offset + "deg");
     }
   }
-
   useEffect(() => {
     const parallaxContainerElement = containerRef.current;
 
@@ -111,9 +88,17 @@ const ParallaxContainer = React.forwardRef((props, ref) => {
     <section
       className="relative flex w-4/5 h-auto preserve-3d backface-hidden will-change-transform "
       ref={containerRef}
+      onMouseEnter={() => {
+        console.log("enter");
+        setIsOn(true);
+      }}
+      onMouseLeave={() => {
+        setIsOn(false);
+      }}
       style={{
-        transform:
-          "perspective(var(--width-y)) rotateY(var(--mouse-x)) rotateX(var(--rotate-x)) ",
+        transform: `perspective(${
+          elementWidth * 3 + "px"
+        }) rotateY(var(--mouse-x)) rotateX(var(--rotate-x)) `,
       }}
     >
       {childContainers.map(({ contentRef }, index) => (

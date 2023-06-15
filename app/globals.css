@@ -8,3 +8,8 @@
     --rotate-x: 0deg;
     --width-y: 0px;
 }
+
+::selection {
+    background: #1F1F1F;
+    color: #F2F2F2;
+}

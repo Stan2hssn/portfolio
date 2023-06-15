@@ -1,9 +1,10 @@
 "use client";
 import Container from "@templates/container";
 import gsap from "gsap";
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { classNames } from "@utils/class_names";
 import Heading from "./heading";
+import { useCursor } from "@context/cursor_provider";
 
 export default function AbsoluteBadges() {
   const animationTextIn = "animationTextIn";
@@ -11,13 +12,14 @@ export default function AbsoluteBadges() {
   const animationRound = "animationRound";
   const copyOut = "copyOut";
   const copyIn = "copyIn";
+  const { setScaled } = useCursor();
 
-  const tl = gsap.timeline({ paused: true });
-  const tl2 = gsap.timeline({ paused: true });
-  const tl3 = gsap.timeline({ paused: true });
+  const tl = useRef(null);
+  const tl2 = useRef(null);
+  const tl3 = useRef(null);
 
   async function animation() {
-    tl2
+    tl2.current
       .to(".animationRound", {
         scale: 1.8,
         duration: 0.4,
@@ -28,13 +30,14 @@ export default function AbsoluteBadges() {
         duration: 0.2,
         ease: "power2.inOut",
       });
-    tl.to(".animationTextIn", {
-      y: "-1rem",
-      opacity: "0",
-      gap: "1.5rem",
-      duration: 0.3,
-      ease: "power2.inOut",
-    })
+    tl.current
+      .to(".animationTextIn", {
+        y: "-1rem",
+        opacity: "0",
+        gap: "1.5rem",
+        duration: 0.3,
+        ease: "power2.inOut",
+      })
       .to(".animationTextIn", {
         display: "none",
         duration: 0,
@@ -52,32 +55,41 @@ export default function AbsoluteBadges() {
       });
   }
 
+  useEffect(() => {
+    // define timelines inside a useEffect hook
+    tl.current = gsap.timeline({ paused: true });
+    tl2.current = gsap.timeline({ paused: true });
+    tl3.current = gsap.timeline({ paused: true });
+    // populate timelines with animations here
+    // ...
+  }, []);
+
   function GsapIn() {
-    tl.clear();
-    tl2.clear();
-    tl3.clear();
-    tl.play();
-    tl2.play();
-    console.log("enter");
+    tl.current.clear();
+    tl2.current.clear();
+    tl3.current.clear();
+    tl.current.play();
+    tl2.current.play();
+    setScaled("scale(0)");
     animation();
   }
 
   function GsapOut() {
-    tl.reverse();
-    tl2.reverse();
-    tl3.reverse();
-    console.log("out");
+    setScaled("scale(1)");
+    tl.current.reverse();
+    tl2.current.reverse();
+    tl3.current.reverse();
   }
 
   function gsapClicked() {
-    tl3.play();
+    tl3.current.play();
     Clicked();
   }
 
   async function Clicked() {
     await navigator.clipboard.writeText("stan.husson@edu.gobelins.fr");
 
-    tl3
+    tl3.current
       .to(".copyOut", {
         y: "0.5rem",
         opacity: "0",
