@@ -49,7 +49,7 @@ export default function Cursor() {
         gsap.to(cursor, {
           "--cursor-x": cursorX,
           "--cursor-y": cursorY,
-          duration: 0.2,
+          duration: 0.1,
           ease: "slow",
         });
       }
