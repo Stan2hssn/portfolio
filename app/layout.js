@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
     >
       <body
         cz-shortcut-listen="true"
-        className="font-sans flex flex-col  text-content-grey_100 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] cursor-none"
+        className="font-sans flex flex-col  text-content-grey_100 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
       >
         <CursorProvider>{children}</CursorProvider>
       </body>

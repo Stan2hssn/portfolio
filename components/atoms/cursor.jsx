@@ -17,23 +17,26 @@ export default function Cursor() {
   useEffect(() => {
     onClick.current = gsap
       .timeline({ paused: true })
-      .to(".classOnClick", {
-        width: "192px",
-        height: "192px",
-        mixBlendMode: "normal",
-        duration: 0.6,
-        ease: "slow",
-      })
+      .to(
+        ".classOnClick",
+        {
+          width: "192px",
+          height: "192px",
+          mixBlendMode: "normal",
+          duration: 0.6,
+          ease: "slow",
+        },
+        "<"
+      )
       .to(
         ".textOnClick",
         {
           opacity: "1",
           transform: "translateY(-1em)",
-          duration: 0.3,
-          ease: "slow",
-          delay: 0.6,
+          duration: 0.2,
+          ease: "power2.inOut",
         },
-        "<"
+        ">"
       )
       .pause();
   }, []);
@@ -49,7 +52,7 @@ export default function Cursor() {
         gsap.to(cursor, {
           "--cursor-x": cursorX,
           "--cursor-y": cursorY,
-          duration: 0.1,
+          duration: 0.2,
           ease: "slow",
         });
       }
@@ -65,7 +68,6 @@ export default function Cursor() {
       }
       if (!isOn) {
         onClick.current.reverse();
-        console.log(isOn);
       }
     }
   }, [cursorPos, isOn]);

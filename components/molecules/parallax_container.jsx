@@ -29,8 +29,7 @@ const ParallaxContainer = React.forwardRef((props, ref) => {
     const influence = 10;
 
     const elementHeight = parallaxContentElement.offsetHeight;
-    const newElementWidth = parallaxContentElement.offsetWidth;
-    setElementWidth(newElementWidth);
+    setElementWidth(parallaxContentElement.offsetWidth);
     const offset =
       (parallaxContainerElement.getBoundingClientRect().top - elementHeight) /
         60 -
@@ -59,28 +58,53 @@ const ParallaxContainer = React.forwardRef((props, ref) => {
     if (offset) {
       parallaxContainerElement.style.setProperty("--rotate-x", offset + "deg");
     }
+
+    console.log(
+      parallaxContainerElement.getBoundingClientRect().top +
+        parallaxContainerElement.getBoundingClientRect().height * 2
+    );
   }
+  function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    const html = document.documentElement;
+
+    return (
+      rect.top >= -window.innerHeight / 2 &&
+      rect.bottom <=
+        (window.innerHeight || html.clientHeight) + window.innerHeight / 2
+    );
+  }
+
+  // Dans votre composant :
   useEffect(() => {
     const parallaxContainerElement = containerRef.current;
 
-    const handleScroll = (e) => {
-      childContainers.forEach(({ contentRef }) => {
-        handleEvent(e, containerRef, contentRef);
-      });
-    };
-
     const handleMouseMove = (e) => {
+      if (!isInViewport(parallaxContainerElement)) {
+        return;
+      }
+
       childContainers.forEach(({ contentRef }) => {
         handleEvent(e, containerRef, contentRef);
       });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = (e) => {
+      if (!isInViewport(parallaxContainerElement)) {
+        return;
+      }
+
+      childContainers.forEach(({ contentRef }) => {
+        handleEvent(e, containerRef, contentRef);
+      });
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [containerRef, childContainers]);
 
