@@ -115,8 +115,8 @@ export default function AbsoluteBadges() {
   return (
     <Container
       size="lg"
-      expend="absolute md:fixed flex-row w-full mb-8 md:mb-16 bottom-0 left-0 justify-start z-[900]"
-      intern="flex justify-start w-full"
+      expend="absolute md:fixed flex-row !w-auto !mr-0  mb-8 md:mb-16 bottom-0 left-0 justify-start z-[900]"
+      intern="flex justify-start !pr-0"
     >
       <div
         className="relative flex flex-col w-40 h-40 rounded-full items-center justify-center z-[100] cursor-pointer"
@@ -303,6 +303,7 @@ export default function AbsoluteBadges() {
           </div>
         </span>
       </div>
+      <div></div>
     </Container>
   );
 }

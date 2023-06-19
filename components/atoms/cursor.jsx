@@ -7,37 +7,48 @@ import Heading from "@atoms/heading";
 
 export default function Cursor() {
   const ref = useRef(null);
-  const { cursorPos, isScaled, isOn } = useCursor();
+  const { cursorPos, isScaled, isOn, isColor } = useCursor();
 
   const onClick = useRef(null);
 
   const classOnClick = "classOnClick";
   const textOnClick = "textOnClick";
+  const scaler = "scaler";
 
   useEffect(() => {
+    const scale = isScaled;
     onClick.current = gsap
       .timeline({ paused: true })
+      .to(".textOnClick", {
+        duration: 0,
+        transform: "scale(0.17)",
+      })
+
       .to(
         ".classOnClick",
         {
-          width: "192px",
-          height: "192px",
-          mixBlendMode: "normal",
-          duration: 0.6,
-          ease: "slow",
+          "--cursor-scale": `${scale}`,
+          duration: 0.3,
+          ease: "power2.inOut",
         },
         "<"
       )
+      .to(".textOnClick", {
+        opacity: "1",
+        transform: "scale(0.17) translateY(-1em)",
+        duration: 0.3,
+        ease: "power2.inOut",
+      })
       .to(
-        ".textOnClick",
+        ".scaler",
         {
-          opacity: "1",
-          transform: "translateY(-1em)",
+          transform: "scale(.9)",
           duration: 0.2,
           ease: "power2.inOut",
         },
-        ">"
+        "<"
       )
+
       .pause();
   }, []);
 
@@ -75,13 +86,13 @@ export default function Cursor() {
   return (
     <div
       ref={ref}
-      className={classNames(
-        "fixed flex w-6 h-6 mix-blend-difference animate-cursor z-[9999] pointer-events-none",
-        classOnClick
-      )}
+      className={
+        "fixed flex w-6 h-6 animate-cursor z-[9999] pointer-events-none"
+      }
       style={{
         top: "var(--cursor-y, 0px)",
         left: "var(--cursor-x, 0px)",
+        mixBlendMode: `${isColor}`,
         transform: "var(--cursor-scale, 1) translate(-50%, -50%)",
         transformOrigin: "0% 0%",
       }}
@@ -101,98 +112,100 @@ export default function Cursor() {
           Click <br /> for more
         </Heading>
       </div>
-      <div
-        className={classNames(
-          "absolute flex items-center justify-center w-6 h-6",
-          classOnClick
-        )}
-      >
-        <svg
-          className="origin-center animate-spinSlow1"
-          width="126"
-          height="140"
-          viewBox="0 0 176 190"
+      <div className={classNames("relative flex w-6 h-6 ", scaler)}>
+        <div
+          className={classNames(
+            "absolute flex items-center justify-center w-6 h-6 ",
+            classOnClick
+          )}
         >
-          <ellipse
-            cx="85.063"
-            cy="96.6351"
-            rx="85.063"
-            ry="96.6351"
-            transform="matrix(0.871356 0.490652 -0.48698 0.873413 60.8088 -31.3015)"
-            fill="#EEEEEE"
-            fillOpacity="0.3"
-          />
-        </svg>
-      </div>
+          <svg
+            className="origin-center animate-spinSlow1"
+            width="126"
+            height="140"
+            viewBox="0 0 176 190"
+          >
+            <ellipse
+              cx="85.063"
+              cy="96.6351"
+              rx="85.063"
+              ry="96.6351"
+              transform="matrix(0.871356 0.490652 -0.48698 0.873413 60.8088 -31.3015)"
+              fill="#EEEEEE"
+              fillOpacity="0.3"
+            />
+          </svg>
+        </div>
 
-      <div
-        className={classNames(
-          "absolute flex items-center justify-center w-6 h-6",
-          classOnClick
-        )}
-      >
-        <svg
-          className="origin-center animate-spinSlow2"
-          width="141"
-          height="140"
-          viewBox="0 0 251 220"
+        <div
+          className={classNames(
+            "absolute flex items-center justify-center w-6 h-6",
+            classOnClick
+          )}
         >
-          <ellipse
-            cx="125.119"
-            cy="109.937"
-            rx="109.340"
-            ry="125.119"
-            transform="rotate(90 125.119 109.937)"
-            fill="#EEEEEE"
-            fillOpacity="0.5"
-          />
-        </svg>
-      </div>
+          <svg
+            className="origin-center animate-spinSlow2"
+            width="141"
+            height="140"
+            viewBox="0 0 251 220"
+          >
+            <ellipse
+              cx="125.119"
+              cy="109.937"
+              rx="109.340"
+              ry="125.119"
+              transform="rotate(90 125.119 109.937)"
+              fill="#EEEEEE"
+              fillOpacity="0.5"
+            />
+          </svg>
+        </div>
 
-      <div
-        className={classNames(
-          "absolute flex items-center justify-center w-6 h-6",
-          classOnClick
-        )}
-      >
-        <svg
-          className="origin-center animate-spinSlow3"
-          width="138"
-          height="144"
-          viewBox="0 0 248 224"
+        <div
+          className={classNames(
+            "absolute flex items-center justify-center w-6 h-6",
+            classOnClick
+          )}
         >
-          <ellipse
-            cx="109.402"
-            cy="125.339"
-            rx="109.402"
-            ry="125.339"
-            transform="matrix(-0.340509 0.939515 -0.940418 -0.345502 278.621 52.5823)"
-            fill="#EEEEEE"
-            fillOpacity="0.7"
-          />
-        </svg>
-      </div>
+          <svg
+            className="origin-center animate-spinSlow3"
+            width="138"
+            height="144"
+            viewBox="0 0 248 224"
+          >
+            <ellipse
+              cx="109.402"
+              cy="125.339"
+              rx="109.402"
+              ry="125.339"
+              transform="matrix(-0.340509 0.939515 -0.940418 -0.345502 278.621 52.5823)"
+              fill="#EEEEEE"
+              fillOpacity="0.7"
+            />
+          </svg>
+        </div>
 
-      <div
-        className={classNames(
-          "absolute flex items-center justify-center w-6 h-6",
-          classOnClick
-        )}
-      >
-        <svg
-          className="origin-center animate-spinSlow4"
-          width="135"
-          height="137"
-          viewBox="0 0 237 250"
+        <div
+          className={classNames(
+            "absolute flex items-center justify-center w-6 h-6",
+            classOnClick
+          )}
         >
-          <ellipse
-            cx="118.233"
-            cy="124.904"
-            rx="117.921"
-            ry="124.904"
-            fill="#EEEEEE"
-          />
-        </svg>
+          <svg
+            className="origin-center animate-spinSlow4"
+            width="135"
+            height="137"
+            viewBox="0 0 237 250"
+          >
+            <ellipse
+              cx="118.233"
+              cy="124.904"
+              rx="117.921"
+              ry="124.904"
+              fill="#EEEEEE"
+            />
+          </svg>
+        </div>
       </div>
     </div>
   );

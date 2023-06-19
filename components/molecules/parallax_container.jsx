@@ -8,7 +8,7 @@ import { useCursor } from "@context/cursor_provider";
 const ParallaxContainer = React.forwardRef((props, ref) => {
   const containerRef = useRef(null);
   const [elementWidth, setElementWidth] = useState(0);
-  const { cursorPos, setIsOn } = useCursor();
+  const { cursorPos, setIsOn, setScaled, setColor } = useCursor();
   const coverCase = [
     "relative !aspect-[16/8] w-3/4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[1]",
     "absolute w-1/3 top-3/4 right-0 transform z-20",
@@ -113,11 +113,14 @@ const ParallaxContainer = React.forwardRef((props, ref) => {
       className="relative flex w-4/5 h-auto preserve-3d backface-hidden will-change-transform "
       ref={containerRef}
       onMouseEnter={() => {
-        console.log("enter");
         setIsOn(true);
+        setScaled("scale(6)");
+        setColor("normal");
       }}
       onMouseLeave={() => {
         setIsOn(false);
+        setScaled("scale(1)");
+        setColor("difference");
       }}
       style={{
         transform: `perspective(${

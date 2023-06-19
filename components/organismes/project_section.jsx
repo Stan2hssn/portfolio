@@ -11,7 +11,7 @@ export default function ProjectSection() {
     <Container
       id="Project"
       size="lg"
-      intern="flex flex-col items-center w-full h-auto  md:h-auto md:py-44"
+      intern="flex flex-col items-center w-full h-auto  md:h-auto md:pt-44"
       expend="justify-center bg-content-grey_100"
     >
       <Heading as="h1" color="dark">

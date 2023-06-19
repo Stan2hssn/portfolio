@@ -8,6 +8,7 @@ export const CursorProvider = ({ children }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isScaled, setScaled] = useState("scale(1)");
   const [isOn, setIsOn] = useState(false);
+  const [isColor, setColor] = useState("difference");
 
   useEffect(() => {
     function handleMouseMove(e) {
@@ -30,6 +31,8 @@ export const CursorProvider = ({ children }) => {
         setScaled,
         isOn,
         setIsOn,
+        isColor,
+        setColor,
       }}
     >
       {children}

@@ -6,6 +6,7 @@ import AbsoluteBadges from "@atoms/aboslute_badges";
 import Noise from "@atoms/noise";
 import ProjectSection from "@organismes/project_section";
 import Cursor from "@atoms/cursor";
+import Footer from "@organismes/footer";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Hero />
         <ProjectSection />
       </section>
+      <Footer />
     </main>
   );
 }

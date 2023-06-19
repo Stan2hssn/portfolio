@@ -305,7 +305,6 @@ export const theme = {
         purple: "#E41DC3",
       },
       background: {
-        light: "F2F2F2",
         shadow_light: "#D9D9D9",
         noise_1: "url('/public/images/textures/noise1.png')",
         noise_2: "url('/public/images/textures/noise2.png')",
