@@ -58,11 +58,6 @@ const ParallaxContainer = React.forwardRef((props, ref) => {
     if (offset) {
       parallaxContainerElement.style.setProperty("--rotate-x", offset + "deg");
     }
-
-    console.log(
-      parallaxContainerElement.getBoundingClientRect().top +
-        parallaxContainerElement.getBoundingClientRect().height * 2
-    );
   }
   function isInViewport(element) {
     const rect = element.getBoundingClientRect();
@@ -75,7 +70,6 @@ const ParallaxContainer = React.forwardRef((props, ref) => {
     );
   }
 
-  // Dans votre composant :
   useEffect(() => {
     const parallaxContainerElement = containerRef.current;
 

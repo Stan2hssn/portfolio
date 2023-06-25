@@ -86,17 +86,17 @@ export const theme = {
         },
       ],
       h2MD: [
-        "6rem",
+        "4rem",
         {
-          lineHeight: "6.25rem",
+          lineHeight: "4.25rem",
           letterSpacing: "0.01em",
           fontWeight: "400",
         },
       ],
       h2SM: [
-        "6rem",
+        "3rem",
         {
-          lineHeight: "6.25rem",
+          lineHeight: "3.25rem",
           letterSpacing: "0.01em",
           fontWeight: "400",
         },

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
 import { classNames } from "@utils/class_names";
 
@@ -23,33 +23,36 @@ const SIZE_CLASSNAMES = {
   button: "text-button font-sans uppercase",
 };
 
-export default function Heading({
-  as,
-  size = as,
-  color = "light",
-  children,
-  className,
-  anchor,
-}) {
-  const headingClassNames = classNames(
-    SIZE_CLASSNAMES[size],
-    COLOR_CLASSNAMES[color],
-    className
-  );
+const Heading = forwardRef(
+  (
+    { as, size = as, color = "light", children, className, anchor, style },
+    ref
+  ) => {
+    const headingClassNames = classNames(
+      SIZE_CLASSNAMES[size],
+      COLOR_CLASSNAMES[color],
+      className
+    );
 
-  const attrs = {};
-  if (anchor?.length > 0) {
-    attrs.anchor = anchor;
+    const attrs = {};
+    if (anchor?.length > 0) {
+      attrs.anchor = anchor;
+    }
+
+    const HeadingTag = as === "span" ? "span" : as;
+
+    return (
+      <HeadingTag
+        ref={ref}
+        className={headingClassNames}
+        {...attrs}
+        style={style}
+      >
+        {children}
+      </HeadingTag>
+    );
   }
-
-  const HeadingTag = as === "span" ? "span" : as;
-
-  return (
-    <HeadingTag className={headingClassNames} {...attrs}>
-      {children}
-    </HeadingTag>
-  );
-}
+);
 
 Heading.propTypes = {
   anchor: PropTypes.string,
@@ -59,4 +62,7 @@ Heading.propTypes = {
   color: PropTypes.oneOf(Object.keys(COLOR_CLASSNAMES)),
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   className: PropTypes.string,
+  style: PropTypes.object,
 };
+
+export default Heading;

@@ -38,7 +38,7 @@ export default function ProjectSection() {
         return (
           <div
             key={index}
-            className="flex flex-col gap-24 mt-32 mb-64 justify-center items-center w-full"
+            className="flex flex-col gap-24 mt-32 mb-48 justify-center items-center w-full"
           >
             <div className="flex flex-col items-center gap-16">
               <Heading

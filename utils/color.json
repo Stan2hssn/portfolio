@@ -1,0 +1,102 @@
+[
+  {
+    "language": "English",
+    "word": "Hello",
+    "color": "#E55E1A"
+  },
+  {
+    "language": "French",
+    "word": "Bonjour",
+    "color": "#E5A01A"
+  },
+  {
+    "language": "German",
+    "word": "Hallo",
+    "color": "#EBCF47"
+  },
+  {
+    "language": "Spanish",
+    "word": "Hola",
+    "color": "#78D678"
+  },
+  {
+    "language": "Italian",
+    "word": "Ciao",
+    "color": "#41C0AB"
+  },
+  {
+    "language": "Dutch",
+    "word": "Hallo",
+    "color": "#4156C0"
+  },
+  {
+    "language": "Russian",
+    "word": "Привет",
+    "color": "#5341C0"
+  },
+  {
+    "language": "Polish",
+    "word": "Cześć",
+    "color": "#BF4085"
+  },
+  {
+    "language": "Swedish",
+    "word": "Hej",
+    "color": "#E55E1A"
+  },
+  {
+    "language": "Danish",
+    "word": "Hej",
+    "color": "#E5A01A"
+  },
+  {
+    "language": "Finnish",
+    "word": "Hei",
+    "color": "#EBCF47"
+  },
+  {
+    "language": "Portuguese",
+    "word": "Olá",
+    "color": "#78D678"
+  },
+  {
+    "language": "Czech",
+    "word": "Ahoj",
+    "color": "#41C0AB"
+  },
+  {
+    "language": "Hungarian",
+    "word": "Helló",
+    "color": "#4156C0"
+  },
+  {
+    "language": "Romanian",
+    "word": "Salut",
+    "color": "#5341C0"
+  },
+  {
+    "language": "Greek",
+    "word": "Γεια",
+    "color": "#BF4085"
+  },
+  {
+    "language": "Turkish",
+    "word": "Merhaba",
+    "color": "#E55E1A"
+  },
+  {
+    "language": "Arabic",
+    "word": "مرحبا",
+    "color": "#E5A01A"
+  },
+  {
+    "language": "Japanese",
+    "word": "こんにちは",
+    "color": "#EBCF47"
+  },
+  {
+    "language": "Chinese",
+    "word": "你好",
+    "color": "#78D678"
+  }
+]

@@ -15,8 +15,12 @@ export default function Header() {
         <Logo />
       </Link>
       <div className="flex flex-row gap-6 sm:gap-16">
-        <Nav_items name={"Project"} link="#Project" />
-        <Nav_items name={"About me"} />
+        <Nav_items color="light" link="#Project">
+          Project
+        </Nav_items>
+        <Nav_items color="light" link="#Project">
+          About me
+        </Nav_items>
       </div>
     </Container>
   );
